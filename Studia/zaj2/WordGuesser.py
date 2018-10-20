@@ -1,8 +1,9 @@
 import random
 
-
 class WordGuesser():
     def __init__(self):
+        #TODO   dorobic petle ktora bedzie dzialac do momentu zakonczenia przez uzytkownika.
+        self.gameStart = True
         self.chances = 6
         self.temp_word = ""
         self.correct_word = ""
@@ -16,8 +17,10 @@ class WordGuesser():
         self.countWord()
 
         #Glowne metody gry
-        print("Komputer wylosował slowo, jest ono dlugosci {}".format(self.counted_words))
-        print("Pora odgadnąć slowo.")
+        print("Komputer wylosował slowo, jest ono dlugosci: {} liter".format(self.counted_words))
+        print("Prosze podać proponowaną literę.")
+        self.getAnswer()
+        self.askQuestion()
 
 
     def countWord(self):
@@ -39,9 +42,6 @@ class WordGuesser():
             POWODZENIA!
         """)
 
-    def checkChances(self):
-        pass
-
     def getAnswer(self):
         self.answer = input("")
 
@@ -53,5 +53,11 @@ class WordGuesser():
             print(self.temp_word)
         else:
             print("NIE")
+    def checkAnswer(self):
+        if(self.answer == self.correct_word):
+            print("Gratulacje, to jest to słowo!")
+        else:
+            print("Przykro mi, proszę spróbować ponownie")
+            self.getAnswer()
 
 word = WordGuesser()
