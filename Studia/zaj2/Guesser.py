@@ -3,7 +3,8 @@ import random
 class Guesser:
     def __init__(self):
         self.score = 0
-
+        self.temp_one = 0
+        self.temp_word = ''
 
         self.words = ("python","gdansk","dlaczego","gdynia","wsb")
         print("""
@@ -43,9 +44,17 @@ class Guesser:
             print("Czy chcesz skorzystać z podpowiedzi?")
             choice = input("T/N")
             if (choice.upper() == "t".upper()):
-                self.giveHint(self.mixed[random.randint(0, len(self.mixed) - 1)])
+                #TODO!!!!!!!
+                #Zrobić tak, aby po sprawdzeniu słowa, by dodawał literkę do zbioru i pokazywał cały zbiór.
+                self.score -= 1
+                self.temp_word += self.correct_word[self.temp_one]
+                self.giveHint(self.temp_word)
+                self.temp_one += 1
             self.answer = input("Twoja odpowiedź: ")
+        if(self.score == 0):
+            self.score += 100
         if(self.answer == self.correct_word):
             print("Zgada się! Zgadłeś!\n")
+            print("Zakończyłeś grę mając %s punktów" %(self.score))
 
 game = Guesser()
