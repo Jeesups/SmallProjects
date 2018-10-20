@@ -1,4 +1,3 @@
-import random
 
 def Count(start,end,step):
     temp = start
