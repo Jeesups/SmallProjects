@@ -18,9 +18,10 @@ class WordGuesser():
 
         #Glowne metody gry
         print("Komputer wylosował slowo, jest ono dlugosci: {} liter".format(self.counted_words))
-        print("Prosze podać proponowaną literę.")
-        self.getAnswer()
-        self.askQuestion()
+        while self.answer != self.correct_word:
+            print("Prosze podać proponowaną literę.")
+            self.getAnswer()
+            self.askQuestion()
 
 
     def countWord(self):
@@ -46,13 +47,19 @@ class WordGuesser():
         self.answer = input("")
 
     def askQuestion(self):
-        if(self.answer in self.correct_word and self.chances > 0):
+        if(self.answer in self.correct_word):
             print("TAK")
             self.temp_word += self.answer
             self.chances -= 1
             print(self.temp_word)
         else:
             print("NIE")
+        if(self.chances <= 0):
+            print("Wykorzystałeś wszystkie szanse")
+            print("Proszę podać wylosowaną nazwę: ")
+            self.getAnswer()
+            self.checkAnswer()
+
     def checkAnswer(self):
         if(self.answer == self.correct_word):
             print("Gratulacje, to jest to słowo!")
