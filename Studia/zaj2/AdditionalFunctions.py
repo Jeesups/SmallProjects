@@ -18,5 +18,3 @@ def avg():
 
 def stand_deviation():
     pass
-
-print(__file__)
