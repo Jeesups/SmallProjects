@@ -13,8 +13,13 @@ def median(list):
 
     return result
 
-def avg():
-    pass
+def avg(list):
+    result = 0
+    temp = 0
+    for i in list:
+        temp += i
+    result = temp / 2
+    return result
 
 def stand_deviation():
     pass
