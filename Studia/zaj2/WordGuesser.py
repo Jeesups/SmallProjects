@@ -23,7 +23,6 @@ class WordGuesser():
             self.getAnswer()
             self.askQuestion()
 
-
     def countWord(self):
         self.counted_words = len(self.correct_word)
 
