@@ -15,4 +15,3 @@ print(AF.stand_deviation(example_list_odd))
 #Srednia
 print(AF.avg(example_list_even))
 print(AF.avg(example_list_odd))
-
