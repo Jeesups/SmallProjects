@@ -14,23 +14,24 @@ class Dictionary():
         self.inputKey = ""
         self.inputValue = ""
         self.inputChoice = ""
-        self.exit = True
+        self.exit = False
         self.file = ""
 
 
         self.startingMessage()
         
-        while self.exit:
+        while not self.exit:
             self.checkInput()
 
     def readFile(self):
-        self.file = json.loads('dict.txt')
+        with open('dict.json') as data_file:
+            self.file = json.load(data_file)
     
     def writeFile(self,source):
         #Dodac Try catch aby stworzyl plik TXT gdy go nie ma,
         #Inaczej dziala w modzie append (a)
         try:
-            json.dump([source],open("dict.txt",'a')) 
+            json.dump([source],open("dict.json",'a')) 
         except IOError:
             file = open("dict.txt",w)
             file.close()
@@ -82,8 +83,8 @@ class Dictionary():
         elif(self.inputChoice == '2'):
             print("Wyswietlam wszystkie klucze wraz z ich wartosciami")
             self.readFile()
-            for key,value in self.file.items():
-                print("{} : {} ".format(key,value))
+            for key in self.file:
+               print("{}".format(key))
             
             self.optionMenu()
             
@@ -103,10 +104,11 @@ class Dictionary():
             self.optionMenu()
 
         elif(self.inputChoice == '5'):
-            self.exit = False
+            self.exit = True
             print("Do zobaczenia!")
         
         else:
             print("ZLY NUMER OPCJI")
+            self.checkInput()
 
 dicts = Dictionary()
