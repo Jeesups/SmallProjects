@@ -40,6 +40,15 @@ class ListChecker:
         self.printReversed()
         print("-----------------------------")
         self.printSorted()
+        print("-----------------------------")
+        print("Lista przed usunieciem elementu o wskazanym ID")
+        self.printValAndIndex()
+        self.delFromList()
+        print("Lista po usunieciu elementu o wskazanym ID")
+        self.printValAndIndex()
+        print("-----------------------------")
+
+
     def printValAndIndex(self):
         for i in range(0,len(self.num_list)):
             print("{} . {}".format(i,self.num_list[i]))
@@ -52,15 +61,20 @@ class ListChecker:
         temp_list.sort()
         for i in temp_list:
             print(i)
-    def delFromList(self):#Skonczyc usuwanie z listu o podanym indeksie
+    def delFromList(self):
         try:
-            self.inp = input("Prosze podac index do usuniecia")
+            self.inp = input("Prosze podac index do usuniecia: ")
             del self.num_list[int(self.inp)]
         except TypeError:
             print("Nieobslugiwany typ indeksu!")
-  
-        
-
-
+        except IndexError:
+            print("ID poza zasiegiem!")
+            self.inp = input("Prosze podac index do usuniecia: ")
+            del self.num_list[int(self.inp)]
+    def countEntries(self):#Funkcja ma zapytac sie o element i sprawdza ilosc wystapien i pierwszy index obiektu.
+        self.inp = input("Prosze podac nazwe elementu aby go wyszukac")
+        counter = 0
+        for i in self.num_list:
+            pass    #Dodac tutaj iteracje przez liste i zliczanie elementow.
 
 lc = ListChecker()
