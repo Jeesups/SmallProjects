@@ -47,7 +47,10 @@ class ListChecker:
         print("Lista po usunieciu elementu o wskazanym ID")
         self.printValAndIndex()
         print("-----------------------------")
-
+        self.countEntries()
+        print("-----------------------------")
+        self.getFromTo()
+        print("-----------------------------")
 
     def printValAndIndex(self):
         for i in range(0,len(self.num_list)):
@@ -72,9 +75,31 @@ class ListChecker:
             self.inp = input("Prosze podac index do usuniecia: ")
             del self.num_list[int(self.inp)]
     def countEntries(self):#Funkcja ma zapytac sie o element i sprawdza ilosc wystapien i pierwszy index obiektu.
-        self.inp = input("Prosze podac nazwe elementu aby go wyszukac")
+        self.inp = input("Prosze podac nazwe elementu aby go wyszukac: ")
         counter = 0
+        
         for i in self.num_list:
-            pass    #Dodac tutaj iteracje przez liste i zliczanie elementow.
+            #Dodac tutaj iteracje przez liste i zliczanie elementow.
+            if(self.inp == str(i)):
+                counter = counter + 1
+        
+        print("Ilosc wystapien wartosci {} = {}".format(self.inp,counter))
+        print("Pierwszy index wartosci {} to {}".format(self.inp,self.firstOfKind(self.num_list,self.inp)))
+    def firstOfKind(self,arr,inp):
+        for i in arr:
+            if(inp == str(i)):
+                return arr.index(i)
 
+    #Funkcja ma wybrac elementy z podanego zakresu przez uzytkownika
+    #Trzeba zrobic wyjatki zlej wartosci czy indexu poza zasiegiem.
+    def getFromTo(self):
+        try:
+            begin = input("Prosze podac od ktorego indexu mam wczytac.")
+            end = input("Prosze podac do ktorego indexu mam wczytac.")
+            for i in range(int(begin),int(end)+1):
+                print(self.num_list[i])
+        except ValueError:
+            print("Zla wartosc jako zakres!")
+        except IndexError:
+            print("Index poza zakresem!")
 lc = ListChecker()
