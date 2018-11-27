@@ -57,7 +57,7 @@ class ListChecker:
             print("{} . {}".format(i,self.num_list[i]))
 
     def printReversed(self):
-        for i in reversed(self.num_list):
+        for i in reversed((self.num_list):
             print("{} ".format(i))
     def printSorted(self):
         temp_list = self.num_list.copy()
@@ -90,8 +90,6 @@ class ListChecker:
             if(inp == str(i)):
                 return arr.index(i)
 
-    #Funkcja ma wybrac elementy z podanego zakresu przez uzytkownika
-    #Trzeba zrobic wyjatki zlej wartosci czy indexu poza zasiegiem.
     def getFromTo(self):
         try:
             begin = input("Prosze podac od ktorego indexu mam wczytac.")
