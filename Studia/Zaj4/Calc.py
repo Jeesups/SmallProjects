@@ -1,9 +1,13 @@
 import sys
 import math
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QGridLayout, QLineEdit,QPushButton,QHBoxLayout, QMessageBox
+from PyQt5 import *
+'''
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
+from PyQt5.QtWidgets import QLineEdit,QPushButton,QHBoxLayout, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-
+'''
 class Kalkulator(QWidget):
         def __init__(self, parent=None):
                 super().__init__(parent)
@@ -100,7 +104,7 @@ class Kalkulator(QWidget):
                                 except ValueError:
                                         QMessageBox.critical(self,"Błąd!","Nie można uzyskać pierwiastka z liczby mniejszej od 0!")
                                         
-                        if(nadawca.text())
+                            
                         else:
                                 liczba1 = float(self.liczba1Edt.text())
                                 liczba2 = float(self.liczba2Edt.text())
@@ -111,7 +115,11 @@ class Kalkulator(QWidget):
                                         wynik = liczba1 - liczba2
                                 elif nadawca.text() == "&Mnoz":
                                         wynik = liczba1 * liczba2
-
+                                elif(nadawca.text() == "&Procent"):
+                                    if(liczba1 < liczba2):
+                                        QMessageBox.warning(self,"Błąd","Liczba 1 nie może być wieksza od liczby 2",QMessageBox.Ok)
+                                    else:
+                                        wynik = self.perc(liczba1,liczba2)
                                 elif nadawca.text() == "&Dziel":
                                         try:
                                                 wynik = round(liczba1/liczba2,9)
@@ -122,6 +130,8 @@ class Kalkulator(QWidget):
                         self.wynikEdt.setText(str(wynik))
                 except ValueError:
                         QMessageBox.warning(self,"Błąd","Błędne dane", QMessageBox.Ok)
+                def perc(self,a,b):
+                    return 100 * (float(a)/float(b))
 
 if __name__ == '__main__':
         app = QApplication(sys.argv)
