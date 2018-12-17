@@ -1,13 +1,12 @@
 import sys
 import math
-from PyQt5 import *
-'''
+
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
 from PyQt5.QtWidgets import QLineEdit,QPushButton,QHBoxLayout, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-'''
+
 class Kalkulator(QWidget):
         def __init__(self, parent=None):
                 super().__init__(parent)
